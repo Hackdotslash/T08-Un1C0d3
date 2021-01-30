@@ -9,6 +9,7 @@ Unlike traditional proctoring, online proctoring involves a proctor who observes
 ## Features
 - The purpose is simply to provide accountability, making sure students do not cheat or manipulate the test in any way.
 - Detect cell phone, tablet, and laptop use while a student is taking an assessment.
+- Detects other type of suspicious activities like not focusing on screen.
 
 ## Tech Stack
 - Machine Learning
