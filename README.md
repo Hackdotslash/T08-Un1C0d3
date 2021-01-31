@@ -17,5 +17,5 @@ Unlike traditional proctoring, online proctoring involves a proctor who observes
 - Detects other type of suspicious activities like not focusing on screen.
 
 ## Tech Stack
-- Machine Learning
-- Html, Css, Js
+- ML models using Tensorflow and Teachable Machine
+- Html, Css, p5.js, ml5.js and Javascript
