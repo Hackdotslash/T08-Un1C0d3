@@ -1,3 +1,11 @@
+let tabChange = 0;
+
+document.addEventListener("visibilitychange", function () {
+  if (document.visibilityState === "hidden") {
+    tabChange++;
+    console.log(`You changed the tab: ${tabChange} times`);
+  }
+});
 // Classifier Variable
 let focusedClassifier, suspiciousClassifier, identityClassifier;
 // Model URL
