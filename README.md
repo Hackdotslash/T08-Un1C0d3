@@ -2,7 +2,11 @@
 Official Repository for DotSlash 4.0 Submission of Team 08: Un1C0d3
 
 # Smart proctor
-<img src="https://raw.githubusercontent.com/Hackdotslash/T08-Un1C0d3/main/81847669-D720-4635-95E9-899859ED573E.jpeg?token=ANLPVJKPYEW4OILQXO5FBFLACXFUU" alt="Logo" style="max-width:100" height="350" width="380"/>
+
+<p align="center">
+<img src="https://i.ibb.co/Gx5N82Y/Smart-Proctor.jpg" alt="Smart-Proctor" align="center"  
+height="350" width="380" border="0" />
+</p>
 
 ## What is Smart proctor?
 Unlike traditional proctoring, online proctoring involves a proctor who observes the test-taker so as to verify their identity, answer any questions they'll have, and to stop , identify, and/or report cheating and malpractice. Using secure technology, online proctoring may be a viable alternative to on-site testing.
@@ -15,4 +19,3 @@ Unlike traditional proctoring, online proctoring involves a proctor who observes
 ## Tech Stack
 - Machine Learning
 - Html, Css, Js
-

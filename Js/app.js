@@ -1,16 +1,21 @@
 let tabChange = 0;
-const MAX_COUNT = 20;
 let differentUserCount = 0;
 let unFocussedCount = 0;
 let activityCount = 0;
 
+// * All Constants
+const FOCUSED = "Focused";
+const NO_ACTIVITY = "No Activity";
+const MAX_COUNT = 20;
+const MAX_SUSPICIOUS_COUNT = 5;
+
 // * Listen for activity change
+function createAlert(alertMsg) {
+  swal(alertMsg);
+}
 
 const urlParams = new URLSearchParams(window.location.search);
 const sid = urlParams.get("sid");
-
-console.log("sid");
-console.log(sid);
 
 document.addEventListener("visibilitychange", function () {
   if (document.visibilityState === "hidden") {
@@ -99,6 +104,15 @@ function focusedResult(error, results) {
   // console.log(results[0]);
   // console.log(results[0].label);
   label = results[0].label;
+  if (results[0].label === FOCUSED) {
+    unFocussedCount = 0;
+  } else {
+    unFocussedCount++;
+    if (unFocussedCount > MAX_COUNT) {
+      createAlert("You are not focussed");
+      unFocussedCount = 0;
+    }
+  }
   // Classifiy again!
 }
 
@@ -122,7 +136,16 @@ function suspiciousResult(error, results) {
   // The results are in an array ordered by confidence.
   // console.log(results[0].label);
   label1 = results[0].label;
-  // Classifiy again!
+  console.log(results[0].label);
+  if (results[0].label === NO_ACTIVITY) {
+    activityCount = 0;
+  } else {
+    activityCount++;
+    if (activityCount >= MAX_SUSPICIOUS_COUNT) {
+      createAlert("An Inappropriate activity has been detected");
+      activityCount = 0;
+    }
+  }
 }
 
 // * For identity mode
@@ -147,15 +170,15 @@ function identityResult(error, results) {
   // console.log(results[0].label);
   label2 = results[0].label;
   if (sid === results[0].label) {
-    console.log("Same user found");
+    // console.log("Same user found");
     differentUserCount = 0;
   } else {
-    console.log("Unknown user");
+    // console.log("Unknown user");
     differentUserCount++;
-  }
-
-  if (differentUserCount > MAX_COUNT) {
-    alert("Invalid activity");
+    if (differentUserCount > MAX_COUNT) {
+      createAlert("Unrecognised user");
+      differentUserCount = 0;
+    }
   }
 
   // Classifiy again!
