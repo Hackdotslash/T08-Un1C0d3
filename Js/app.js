@@ -34,7 +34,7 @@ let focusedClassifier, suspiciousClassifier, identityClassifier;
 let focusedModelUrl =
   "https://teachablemachine.withgoogle.com/models/lPaUnGWj_/";
 let suspiciousModelUrl =
-  "https://teachablemachine.withgoogle.com/models/6ZSm6dKX9/";
+  "https://teachablemachine.withgoogle.com/models/VP04SOSlZ/";
 let identityModelUrl =
   "https://teachablemachine.withgoogle.com/models/jlXMvG6DG/";
 
