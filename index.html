@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div class="start_box edit_box">
+   <div class="start_box edit_box ">
        <h3>Instructions</h3>
        <p>Total number of questions: <span class="total-ques">5</span></p>
-       <button type="button" class="btn">Start Quiz</button> 
+       <button type="button" class="btn" onclick="startQuiz()">Start Quiz</button> 
     </div>
-    <div class="quiz_box edit_box">
+    <div class="quiz_box edit_box hide">
         <div class="que_num">
             
         </div>
@@ -31,7 +31,7 @@
             
         </div>
     </div>
-    <div class="result_box edit_box">
+    <div class="result_box edit_box hide">
          <h1>Quiz Result</h1>
          <table>
              <tr>
@@ -59,8 +59,8 @@
                 <td><span class="total-score">3 / 5</span></td>
             </tr>
          </table>
-         <button type="button" class="btn">Try Again</button>
-         <button type="button" class="btn">Go To Home</button>
+         <button type="button" class="btn" onclick="tryAgainQuiz()">Try Again</button>
+         <button type="button" class="btn" onclick="goToHome()">Go To Home</button>
     </div>
     <script src="Js/ques.js"></script>
     <script src="Js/app.js"></script>

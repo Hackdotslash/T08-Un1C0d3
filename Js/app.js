@@ -2,11 +2,16 @@ const quesNumb = document.querySelector(".que_num");
 const quesText = document.querySelector(".que_txt");
 const optionsContainer = document.querySelector(".options");
 const ansIndicatorContain = document.querySelector(".ans-indicators");
+const startBox = document.querySelector(".start_box");
+const quizBox = document.querySelector(".quiz_box");
+const resultBox = document.querySelector(".result_box");
 
 let queCntr = 0;
 let currentQues;
 let availableQues = [];
 let availableOption = [];
+let correctAns = 0;
+let attempt = 0;
 
 function setavailableQues(){
     const totalQues = quiz.length;
@@ -50,6 +55,7 @@ function getResult(element){
     if(id === currentQues.answer){
         element.classList.add("correct");
         updateAnsIndicator("correct");
+        correctAns++;
     }
     else{
         element.classList.add("wrong");
@@ -61,6 +67,7 @@ function getResult(element){
             }
         }
     }
+    attempt++;
     restrictClick();
 }
 function updateAnsIndicator(m) {
@@ -73,6 +80,7 @@ function restrictClick(){
     }
 }
 function ansIndicators(){
+    ansIndicatorContain.innerHTML='';
     const totalQues = quiz.length;
     for(i=0; i<totalQues; i++){
         const indicator = document.createElement("div");
@@ -82,13 +90,45 @@ function ansIndicators(){
 function next(){
     if(queCntr === quiz.length){
         console.log("Quiz Over");
+        quizOver();
     }
     else{
         getNewQues();
     }
 }
-
-window.onload = function(){
+function quizOver(){
+    quizBox.classList.add("hide");
+    resultBox.classList.remove("hide");
+    quizResult();
+}
+function quizResult(){
+    resultBox.querySelector(".total_que").innerHTML = quiz.length;
+    resultBox.querySelector(".total_attempt").innerHTML = attempt;
+    resultBox.querySelector(".total_right").innerHTML = correctAns;
+    resultBox.querySelector(".total-wrong").innerHTML = attempt - correctAns;
+    const per = (correctAns/quiz.length)*100;
+    resultBox.querySelector(".percent").innerHTML = per.toFixed(2) + "%";
+    resultBox.querySelector(".total-score").innerHTML = correctAns + " / " + quiz.length;
+}
+function resetQuiz(){
+    queCntr=0;
+    correctAns=0;
+    attempt=0;
+}
+function tryAgainQuiz(){
+    resultBox.classList.add("hide");
+    quizBox.classList.remove("hide");
+    resetQuiz();
+    startQuiz();
+}
+function goToHome(){
+    resultBox.classList.add("hide");
+    startBox.classList.remove("hide");
+    resetQuiz();
+}
+function startQuiz(){
+    startBox.classList.add("hide");
+    quizBox.classList.remove("hide");
     setavailableQues();
     getNewQues();
     ansIndicators();
